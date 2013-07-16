@@ -9,10 +9,11 @@
   <body>
     <p>This is a test file</p>
     <a href="javascript: (function(){ 
-      var jsCode = document.createElement('script');
-      jsCode.setAttribute('src', 'https://raw.github.com/carlsednaoui/ouiseo/master/ouiseo.js');
-      document.body.appendChild(jsCode);
+      if (window.ouiseo === undefined) {
+        var jsCode = document.createElement('script');
+        jsCode.setAttribute('src', 'http://carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.js');
+        document.body.appendChild(jsCode);
+      } else { ouiseo(); }
     })();">Cliky me</a>
-    <script src="sample.js"></script>
   </body>
 </html>

@@ -8,9 +8,11 @@
 
   <body>
     <a href="javascript: (function(){ 
-      var jsCode = document.createElement('script');
-      jsCode.setAttribute('src', 'file:///Users/carl/sites/ouiseo/ouiseo.js');
-      document.body.appendChild(jsCode);
+      if (window.ouiseo === undefined) {
+        var jsCode = document.createElement('script');
+        jsCode.setAttribute('src', 'file:///Users/carl/sites/ouiseo/ouiseo.js');
+        document.body.appendChild(jsCode);
+      } else { ouiseo(); }
     })();">Cliky me</a>
 
 
