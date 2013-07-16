@@ -10,7 +10,7 @@
 }
 
 #ouiseo {
-  display: none;
+  /*display: none;*/
   position: fixed;
   top: 10%;
   left: 10%;
@@ -33,6 +33,7 @@
 }
 
 #ouiseo h1 {
+  color: purple;
   font-size: 1.4em;
   margin-bottom: 10px;
 }
