@@ -1,0 +1,59 @@
+#ouiseo_frame {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255,255,255,.25);
+  cursor: pointer;
+  z-index: 900;
+}
+
+#ouiseo {
+  display: none;
+  position: fixed;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  z-index: 999;
+  border: 10px solid rgba(0,0,0,.5);
+  margin: -5px 0 0 -5px;
+  background: white;
+}
+
+.ouiseo * {
+  border:0;
+  font-size:100%;
+  font:inherit;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  color: black;
+}
+
+#ouiseo h1 {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
+#ouiseo-results {
+  margin: 10px;
+}
+
+.ouiseo-basic-result {
+  margin-bottom: 10px;
+}
+
+.ouiseo-input-text {
+  width: 500px;
+  border: 1px gray solid;
+  padding: 2px 5px;
+}
+
+.ouiseo-textarea {
+  width: 700px;
+  height: 54px;
+  border: 1px gray solid;
+  padding: 2px 5px;
+}

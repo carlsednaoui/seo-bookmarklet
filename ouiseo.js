@@ -1,6 +1,4 @@
 (function() {
-  // Need to deal with HTTPS
-
   // The minimum version of jQuery we want
   var v = '1.10.2';
 
@@ -53,10 +51,9 @@
   function initOuiseo() {
     (window.ouiseo = function() {
       var iframe = document.createElement('iframe');
-      iframe.src = 'test.html';
+      iframe.src = 'http://carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.html';
       iframe.style.border = 'none';
       document.body.appendChild(iframe);
-      // $('body').load('test.html');
       // $("body").append("\
       //   <div id='ouiseo_frame'>\
       //   </div>\
@@ -127,6 +124,7 @@
 
 // <a href="javascript:(function(){if(window.myBookmarklet!==undefined){myBookmarklet();}else{document.body.appendChild(document.createElement('script')).src='http://iamnotagoodartist.com/stuff/ouiseoframe2.js?';}})();">WikiFrame</a>
 
+// Need to deal with HTTPS
 
 // Highlight nofollowed links
 // Headers H1: 1
