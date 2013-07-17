@@ -6,7 +6,8 @@
   if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
     var done      = false,
     script        = document.createElement('script');
-    script.src    = '//ajax.googleapis.com/ajax/libs/jquery/' + v + '/jquery.min.js';
+    // script.src    = '//ajax.googleapis.com/ajax/libs/jquery/' + v + '/jquery.min.js';
+    script.src    = 'http://ajax.googleapis.com/ajax/libs/jquery/' + v + '/jquery.min.js';
 
     script.onload = script.onreadystatechange = function() {
       if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
@@ -23,7 +24,8 @@
   function initOuiseo() {
     (window.ouiseo = function() {
       // Add ouiseo
-      $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='//carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.css'>");
+      // $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='//carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.css'>");
+      $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='http://carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.css'>");
       $('body').append(createHTML());
       initializeOuiseoHandlers();
       $("#ouiseo").fadeIn(250);
@@ -64,6 +66,7 @@
       basicSection.appendChild(getLinks());
       basicSection.appendChild(getHeaders());
       basicSection.appendChild(getCanonical());
+      basicSection.appendChild(getCookie());
 
       container.appendChild(basicSection);
       return container;
@@ -101,7 +104,7 @@
       var title     = $('title').text() || '';
       var titleLen  = 0;
       if (!!title)
-        titleLen  = title.length;
+        titleLen  = title.replace(/\n$/, '').length; // Remove last line return, if present
 
       span.innerHTML  = titleLen;
       input.setAttribute('value', title); // Need to use setAttribute here so that value gets pased when appending child
@@ -128,7 +131,7 @@
       var metaDescription     = $('meta[name=description]').attr('content') || '';
       var metaDescriptionLen  = 0;
       if (!!metaDescription)
-        metaDescriptionLen  = metaDescription.length;
+        metaDescriptionLen  = metaDescription.replace(/\n$/, '').length; // Remove last line return, if present
 
       span.innerHTML  = metaDescriptionLen;
       input.setAttribute('value', metaDescription); // Need to use setAttribute here so that value gets pased when appending child
@@ -144,10 +147,11 @@
     function getKeywords() {
       var el    = document.createElement('p'),
           span  = document.createElement('span'),
-          input = document.createElement('textarea');
+          input = document.createElement('input');
 
       el.className     = 'ouiseo-basic-result';
       span.id          = 'ouiseo-keywords-length';
+      input.type       = 'text';
       input.id         = 'ouiseo-keywords';
       input.className  = 'ouiseo-input-text';
 
@@ -157,8 +161,7 @@
         metaKeywordsLen = metaKeywords.split(',').length;
 
       span.innerHTML  = metaKeywordsLen;
-      input.innerHTML = metaKeywords;
-      // input.setAttribute('value', metaKeywords); // Need to use setAttribute here so that value gets pased when appending child
+      input.setAttribute('value', metaKeywords); // Need to use setAttribute here so that value gets pased when appending child
 
       el.innerHTML = 'Meta Keywords (';
       el.appendChild(span);
@@ -253,11 +256,36 @@
       el.innerHTML += canonicalCount;
 
       if (canonicalCount !== 0) {
-        var canonicalURL = $("link[rel='canonical']")[0].href;
-        el.innerHTML += ". First canonical URL: '";
-        el.innerHTML += canonicalURL;
-        el.innerHTML += "'.";
+        $.each($("link[rel='canonical']"), function(index) {
+          el.innerHTML += '<br>';
+          el.innerHTML += $("link[rel='canonical']")[index].href;
+        });
       }
+
+      return el;
+    }
+
+    function getCookie() {
+      var el    = document.createElement('p'),
+          span  = document.createElement('span'),
+          input = document.createElement('input');
+
+      el.className     = 'ouiseo-basic-result';
+      span.id          = 'ouiseo-cookie-count';
+      input.type       = 'text';
+      input.id         = 'ouiseo-cookie';
+      input.className  = 'ouiseo-input-text';
+
+      var cookie     = document.cookie;
+      input.setAttribute('value', cookie); // Need to use setAttribute here so that value gets pased when appending child
+      span.innerHTML = '0';
+      if (cookie !== '')
+        span.innerHTML = cookie.split(';').length;
+
+      el.innerHTML = 'Site cookie: (';
+      el.appendChild(span);
+      el.innerHTML += '): ';
+      el.appendChild(input);
 
       return el;
     }
@@ -280,3 +308,22 @@
 // Site cookie:
 // Referrer URL:
 // Social SEO
+
+// Check if they use KM, GA, Mixpanel, Optimizely, VWO, MouseFlow, Google Remarketing, AdRoll, CrazyEgg
+
+// FACEBOOK
+// FB Description: $('meta[property="og:description"]').attr('content')
+// <meta content='156798584397905' property='fb:app_id'>
+// <meta content='Enjoy a Sunset Sketching Class on a Hudson River Pier' property='og:title' xmlns:og='http://opengraphprotocol.org/schema/'>
+// <meta content='https://s3.amazonaws.com/production.sidetour/uploads/experience/main_image/838/st_river.jpg' property='og:image' xmlns:og='http://opengraphprotocol.org/schema/'>
+// <meta content='https://www.sidetour.com/experiences/enjoy-a-sunset-sketching-class-on-a-hudson-river-pier?utm_campaign=Share&amp;utm_medium=ProfileBtns&amp;utm_source=Facebook' property='og:url' xmlns:og='http://opengraphprotocol.org/schema/'>
+// <meta content='Learn the basics of drawing by hand as you capture the sunset over the river in an intimate beginners’ workshop. ' property='og:description' xmlns:og='http://opengraphprotocol.org/schema/'>
+
+
+// TWITTER
+// <meta content='summary' name='twitter:card'>
+// <meta content='@sidetour' name='twitter:site'>
+// <meta content='https://www.sidetour.com/experiences/enjoy-a-sunset-sketching-class-on-a-hudson-river-pier?utm_campaign=Share&amp;utm_medium=TwitterCard&amp;utm_source=Twitter' name='twitter:url'>
+// <meta content='Enjoy a Sunset Sketching Class on a Hudson River Pier' name='twitter:title'>
+// <meta content='Learn the basics of drawing by hand as you capture the sunset over the river in an intimate beginners’ workshop.  Hosted by Rebecca Schweiger, Founder, The Art Studio NY.' name='twitter:description'>
+// <meta content='https://s3.amazonaws.com/production.sidetour/uploads/experience/main_image/838/st_river.jpg' name='twitter:image'>
