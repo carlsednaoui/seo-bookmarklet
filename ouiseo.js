@@ -1,5 +1,5 @@
-(function() {
-  // The minimum version of jQuery we want
+;(function() {
+  // The minimum version of jQuery required
   var v = '1.10.2';
 
   // Check if jQuery is present and jQuery version
@@ -14,92 +14,220 @@
         initOuiseo();
       }
     };
-    console.log('ouiseo loaded jQuery');
+    console.log('ouiseo loaded jQuery v%s', v);
     document.getElementsByTagName('head')[0].appendChild(script);
   } else {
     initOuiseo();
   }
 
-  function calculateCharLen(selector) {
-    return $(selector).val().length;
-  }
-
-  function calculateImageAltTextCount() {
-    var imgAltCount = 0;
-    $.each($('img'), function(index) {
-       if ($('img')[index].alt) imgAltCount++;
-     });
-    return imgAltCount == [] ? 0 : imgAltCount;
-  }
-
-  function calculateLinksWithTitleCount() {
-    var linkTitleCount = 0;
-    $.each($('a'), function(index) {
-       if ($('a')[index].title !== '') linkTitleCount++;
-     });
-    return linkTitleCount == [] ? 0 : linkTitleCount;
-  }
-
-  function calculateNoFollowLinkCount() {
-    var noFollowedLinkCount = 0;
-    $.each($('a'), function(index) {
-      if ($('a')[index].rel == 'nofollow') noFollowedLinkCount++;
-    });
-    return noFollowedLinkCount;
-  }
-
   function initOuiseo() {
     (window.ouiseo = function() {
+      // Add ouiseo
       $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='http://carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.css'>");
-      $("body").append("\
-        <div id='ouiseo_frame'>\
-        </div>\
-        <div id='ouiseo' class='ouiseo'>\
-          <div id='ouiseo-results'>\
-            <div id='ouiseo-basic-seo'>\
-              <h1>Basic SEO</h1>\
-              <p class='ouiseo-basic-result'>Title (<span id='ouiseo-title-length'></span>): <input type='text' id='ouiseo-title' class='ouiseo-input-text'></p>\
-              <p class='ouiseo-basic-result'>Meta Description (<span id='ouiseo-description-length'></span>): <input type='text' id='ouiseo-description' class='ouiseo-input-text'></p>\
-              <p class='ouiseo-basic-result'>Meta Keywords (<span id='ouiseo-keywords-length'></span>): <textarea id='ouiseo-keywords' class='ouiseo-textarea'></textarea></p>\
-              <p class='ouiseo-basic-result'>Images with alt text: <span id='ouiseo-images-with-alt-text'>0</span> out of <span id='ouiseo-images-on-page'>0</span> images.</p>\
-              <p class='ouiseo-basic-result'>Links with title set: <span id='ouiseo-links-with-title-set'>0</span> out of <span id='ouiseo-links-on-page'>0</span> links. This page has <span id='ouiseo-no-followed-links-count'>0</span> nofollowed links.</p>\
-            </div>\
-          </div>\
-        </div>");
-        $("#ouiseo").fadeIn(750);
+      $('body').append(createHTML());
+      initializeOuiseoHandlers();
+      $("#ouiseo").fadeIn(250);
 
-        $("#ouiseo_frame").click(function(event){
-          $("#ouiseo").fadeOut(750);
-          $("#ouiseo_frame").slideUp(500);
-          setTimeout("$('#ouiseo_frame').remove()", 750);
-          setTimeout("$('#ouiseo-styles').remove()", 750);
-          setTimeout("$('#ouiseo').remove()", 750);
+      // Remove ouiseo when user clicks outside of frame
+      $("#ouiseo_frame").click(function(event){
+        $("#ouiseo").fadeOut(750);
+        $("#ouiseo_frame").slideUp(750);
+        setTimeout("$('#ouiseo_frame').remove()", 750);
+        setTimeout("$('#ouiseo-styles').remove()", 750);
+        setTimeout("$('#ouiseo').remove()", 750);
       });
+    })();
 
-      //////////////////////
-      // Grab initial values
-      //////////////////////
+    function createHTML() {
+      var html = '';
+      html += createOuiseoFrame().outerHTML;
+      html += createOuiseoBody().outerHTML;
+      return html;
+    }
 
-      // Title
-      $('#ouiseo-title').val($('title').text());
-      $('#ouiseo-title-length').text(calculateCharLen('#ouiseo-title'));
+    // Create ouiseo_frame -- allows user to close ouiseo
+    function createOuiseoFrame() {
+      var frame = document.createElement('div');
+      frame.id = 'ouiseo_frame';
+      return frame;
+    }
 
-      // Meta Description
-      $('#ouiseo-description').val($('meta[name=description]').attr('content'));
-      $('#ouiseo-description-length').text(calculateCharLen('#ouiseo-description'));
+    // Call ouiseo html element creation functions
+    function createOuiseoBody() {
+      var container = createOuiseoContainer();
 
-      // Meta Keywords
-      $('#ouiseo-keywords').val($('meta[name=keywords]').attr('content'));
-      $('#ouiseo-keywords-length').text($('meta[name=keywords]').attr('content').split(',').length);
+      var basicSection = createBasicSEOSection();
+      basicSection.appendChild(getTitle());
+      basicSection.appendChild(getDescription());
+      basicSection.appendChild(getKeywords());
+      basicSection.appendChild(getImages());
+      basicSection.appendChild(getLinks());
 
-      // Images
-      $('#ouiseo-images-on-page').text($('img').length);
-      $('#ouiseo-images-with-alt-text').text(calculateImageAltTextCount());
+      container.appendChild(basicSection);
+      return container;
+    }
 
-      // Links
-      $('#ouiseo-links-on-page').text($('a').length);
-      $('#ouiseo-links-with-title-set').text(calculateLinksWithTitleCount());
-      $('#ouiseo-no-followed-links-count').text(calculateNoFollowLinkCount());
+    function createOuiseoContainer() {
+      var container = document.createElement('div');
+      container.id = 'ouiseo';
+      container.className = 'ouiseo';
+      return container;
+    }
+
+    function createBasicSEOSection() {
+      var div = document.createElement('div');
+      div.id = 'ouiseo-basic-seo';
+
+      var title = document.createElement('h1');
+      title.innerHTML = 'Basic SEO';
+
+      div.appendChild(title);
+      return div;
+    }
+
+    function getTitle() {
+      var el    = document.createElement('p'),
+          span  = document.createElement('span'),
+          input = document.createElement('input');
+
+      el.className     = 'ouiseo-basic-result';
+      span.id          = 'ouiseo-title-length';
+      input.type       = 'text';
+      input.id         = 'ouiseo-title';
+      input.className  = 'ouiseo-input-text';
+
+      var title     = $('title').text() || '';
+      var titleLen  = 0;
+      if (!!title)
+        titleLen  = title.length;
+
+      span.innerHTML  = titleLen;
+      input.setAttribute('value', title); // Need to use setAttribute here so that value gets pased when appending child
+
+      el.innerHTML = 'Title (';
+      el.appendChild(span);
+      el.innerHTML += '): ';
+      el.appendChild(input);
+
+      return el;
+    }
+
+    function getDescription() {
+      var el    = document.createElement('p'),
+          span  = document.createElement('span'),
+          input = document.createElement('input');
+
+      el.className     = 'ouiseo-basic-result';
+      span.id          = 'ouiseo-description-length';
+      input.type       = 'text';
+      input.id         = 'ouiseo-description';
+      input.className  = 'ouiseo-input-text';
+
+      var metaDescription     = $('meta[name=description]').attr('content') || '';
+      var metaDescriptionLen  = 0;
+      if (!!metaDescription)
+        metaDescriptionLen  = metaDescription.length;
+
+      span.innerHTML  = metaDescriptionLen;
+      input.setAttribute('value', metaDescription); // Need to use setAttribute here so that value gets pased when appending child
+
+      el.innerHTML = 'Meta Description (';
+      el.appendChild(span);
+      el.innerHTML += '): ';
+      el.appendChild(input);
+
+      return el;
+    }
+
+    function getKeywords() {
+      var el    = document.createElement('p'),
+          span  = document.createElement('span'),
+          input = document.createElement('textarea');
+
+      el.className     = 'ouiseo-basic-result';
+      span.id          = 'ouiseo-keywords-length';
+      input.id         = 'ouiseo-keywords';
+      input.className  = 'ouiseo-input-text';
+
+      var metaKeywords     = $('meta[name=keywords]').attr('content') || '';
+      var metaKeywordsLen  = 0;
+      if (metaKeywords !== '')
+        metaKeywordsLen = metaKeywords.split(',').length;
+
+      span.innerHTML  = metaKeywordsLen;
+      input.innerHTML = metaKeywords;
+      // input.setAttribute('value', metaKeywords); // Need to use setAttribute here so that value gets pased when appending child
+
+      el.innerHTML = 'Meta Keywords (';
+      el.appendChild(span);
+      el.innerHTML += '): ';
+      el.appendChild(input);
+
+      return el;
+    }
+
+    function calculateImageAltTextCount() {
+      var imgAltCount = 0;
+      $.each($('img'), function(index) {
+         if ($('img')[index].alt) imgAltCount++;
+       });
+      return imgAltCount == [] ? 0 : imgAltCount;
+    }
+
+    function getImages() {
+      var el       = document.createElement('p');
+      el.className = 'ouiseo-basic-result';
+
+      var imgCount     = $('img').length,
+          imgAltCount  = calculateImageAltTextCount();
+
+      el.innerHTML  = 'Images with alt text: ';
+      el.innerHTML += imgAltCount;
+      el.innerHTML += ' out of ';
+      el.innerHTML += imgCount;
+
+      return el;
+    }
+
+    function calculateLinksWithTitleCount() {
+      var linkTitleCount = 0;
+      $.each($('a'), function(index) {
+         if ($('a')[index].title !== '') linkTitleCount++;
+       });
+      return linkTitleCount == [] ? 0 : linkTitleCount;
+    }
+
+    function calculateNoFollowLinkCount() {
+      var noFollowedLinkCount = 0;
+      $.each($('a'), function(index) {
+        if ($('a')[index].rel == 'nofollow') noFollowedLinkCount++;
+      });
+      return noFollowedLinkCount;
+    }
+
+    function getLinks() {
+      var el       = document.createElement('p');
+      el.className = 'ouiseo-basic-result';
+
+      var linkCount           = $('a').length,
+          linkWithTitleCount  = calculateLinksWithTitleCount(),
+          noFollowLinkCount   = calculateNoFollowLinkCount();
+
+      el.innerHTML  = 'Links with title set: ';
+      el.innerHTML += linkWithTitleCount;
+      el.innerHTML += ' out of ';
+      el.innerHTML += linkCount;
+      el.innerHTML += ' links. This page has ';
+      el.innerHTML += noFollowLinkCount;
+      el.innerHTML += ' nofollow links.';
+
+      return el;
+    }
+
+    function initializeOuiseoHandlers() {
+      function calculateCharLen(selector) {
+        return $(selector).val().length;
+      }
 
       //////////////////////
       // Update values
@@ -107,15 +235,11 @@
       $('#ouiseo-title').keyup( function() { $('#ouiseo-title-length').text(calculateCharLen('#ouiseo-title')); });
       $('#ouiseo-description').keyup( function() { $('#ouiseo-description-length').text(calculateCharLen('#ouiseo-description')); });
       $('#ouiseo-keywords').keyup( function() { $('#ouiseo-keywords-length').text($('#ouiseo-keywords').val().split(',').length); });
-    })();
+    }
   }
 })();
 
-// <a href="javascript:(function(){if(window.myBookmarklet!==undefined){myBookmarklet();}else{document.body.appendChild(document.createElement('script')).src='http://iamnotagoodartist.com/stuff/ouiseoframe2.js?';}})();">WikiFrame</a>
-
 // Need to deal with HTTPS
-
-// Highlight nofollowed links
 // Headers H1: 1
 // H2: 1
 // H3: 43
