@@ -6,7 +6,7 @@
   if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
     var done      = false,
     script        = document.createElement('script');
-    script.src    = 'http://ajax.googleapis.com/ajax/libs/jquery/' + v + '/jquery.min.js';
+    script.src    = '//ajax.googleapis.com/ajax/libs/jquery/' + v + '/jquery.min.js';
 
     script.onload = script.onreadystatechange = function() {
       if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
@@ -23,7 +23,7 @@
   function initOuiseo() {
     (window.ouiseo = function() {
       // Add ouiseo
-      $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='http://carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.css'>");
+      $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='//carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.css'>");
       $('body').append(createHTML());
       initializeOuiseoHandlers();
       $("#ouiseo").fadeIn(250);
@@ -62,6 +62,8 @@
       basicSection.appendChild(getKeywords());
       basicSection.appendChild(getImages());
       basicSection.appendChild(getLinks());
+      basicSection.appendChild(getHeaders());
+      basicSection.appendChild(getCanonical());
 
       container.appendChild(basicSection);
       return container;
@@ -224,6 +226,42 @@
       return el;
     }
 
+    function getHeaders() {
+      var el       = document.createElement('p');
+      el.className = 'ouiseo-basic-result';
+
+      var hOneCount   = $('h1').length || 0,
+          hTwoCount   = $('h2').length || 0,
+          hThreeCount = $('h3').length || 0;
+
+      el.innerHTML  = 'H1: ';
+      el.innerHTML += hOneCount;
+      el.innerHTML += "<br> H2: ";
+      el.innerHTML += hTwoCount;
+      el.innerHTML += "<br> H3: ";
+      el.innerHTML += hThreeCount;
+
+      return el;
+    }
+
+    function getCanonical() {
+      var el       = document.createElement('p');
+      el.className = 'ouiseo-basic-result';
+
+      var canonicalCount = $("link[rel='canonical']").length || 0;
+      el.innerHTML  = 'Rel Canonical count: ';
+      el.innerHTML += canonicalCount;
+
+      if (canonicalCount !== 0) {
+        var canonicalURL = $("link[rel='canonical']")[0].href;
+        el.innerHTML += ". First canonical URL: '";
+        el.innerHTML += canonicalURL;
+        el.innerHTML += "'.";
+      }
+
+      return el;
+    }
+
     function initializeOuiseoHandlers() {
       function calculateCharLen(selector) {
         return $(selector).val().length;
@@ -239,16 +277,6 @@
   }
 })();
 
-// Need to deal with HTTPS
-// Headers H1: 1
-// H2: 1
-// H3: 43
-// REL Canonical
-// Meta Robots:
 // Site cookie:
 // Referrer URL:
 // Social SEO
-
-// DONT want
-// Sitemap
-// robots.txt
