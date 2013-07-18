@@ -8,7 +8,8 @@
     - The og:type meta tag is necessary for Facebook to render a News Feed story that generates a high click-through rate.
 
 ## Facebook Resources
-- [More info](https://developers.facebook.com/docs/opengraph/creating-object-types/)
+- [Open graph](https://developers.facebook.com/docs/opengraph/)
+- [Object types](https://developers.facebook.com/docs/opengraph/creating-object-types/)
 - [Debugger](https://developers.facebook.com/tools/debug)
 
 ## TODO
