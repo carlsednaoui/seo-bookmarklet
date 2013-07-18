@@ -7,8 +7,8 @@
   if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
     var done = false,
       script = document.createElement('script');
-    // script.src    = '//ajax.googleapis.com/ajax/libs/jquery/' + v + '/jquery.min.js';
-    script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/' + v + '/jquery.min.js';
+    script.src    = '//ajax.googleapis.com/ajax/libs/jquery/' + v + '/jquery.min.js';
+    // script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/' + v + '/jquery.min.js';
 
     script.onload = script.onreadystatechange = function() {
       if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
@@ -25,12 +25,12 @@
   function initOuiseo() {
     (window.ouiseo = function() {
       // Add ouiseo
-      // $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='//carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.css'>");
-      $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='http://carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.css'>");
+      $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='//carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.css'>");
+      // $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='http://carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.css'>");
       $('body').append(createHTML());
       initializeOuiseoHandlers();
       $("#ouiseo").fadeIn(250);
-      // $('head').append(addOuiseoGA());
+      $('head').append(addOuiseoGA());
 
       // Remove ouiseo when user clicks outside of frame
       $("#ouiseo_frame").click(function(event) {
@@ -358,7 +358,7 @@
       input.className = 'ouiseo-input-text';
 
       el.innerHTML = 'FB App Id: ';
-      result = $('meta[property="fb:app_id"]') ? $('meta[property="fb:app_id"]')[0].content : '';
+      result = $('meta[property="fb:app_id"]')[0] ? $('meta[property="fb:app_id"]')[0].content : '';
       input.setAttribute('value', result);
       el.appendChild(input);
 
@@ -376,7 +376,7 @@
       input.className = 'ouiseo-input-text';
 
       el.innerHTML = 'OG URL: ';
-      result = $('meta[property="og:url"]') ? $('meta[property="og:url"]')[0].content : '';
+      result = $('meta[property="og:url"]')[0] ? $('meta[property="og:url"]')[0].content : '';
       input.setAttribute('value', result);
       el.appendChild(input);
 
@@ -394,7 +394,7 @@
       input.className = 'ouiseo-input-text';
 
       el.innerHTML = 'OG Site Name: ';
-      result = $('meta[property="og:site_name"]') ? $('meta[property="og:site_name"]')[0].content : '';
+      result = $('meta[property="og:site_name"]')[0] ? $('meta[property="og:site_name"]')[0].content : '';
       input.setAttribute('value', result);
       el.appendChild(input);
 
@@ -412,7 +412,7 @@
       input.className = 'ouiseo-input-text';
 
       el.innerHTML = 'OG Title: ';
-      result = $('meta[property="og:title"]') ? $('meta[property="og:title"]')[0].content : '';
+      result = $('meta[property="og:title"]')[0] ? $('meta[property="og:title"]')[0].content : '';
       input.setAttribute('value', result);
       el.appendChild(input);
 
@@ -430,7 +430,7 @@
       input.className = 'ouiseo-input-text';
 
       el.innerHTML = 'OG Description: ';
-      result = $('meta[property="og:description"]') ? $('meta[property="og:description"]')[0].content : '';
+      result = $('meta[property="og:description"]')[0] ? $('meta[property="og:description"]')[0].content : '';
       input.setAttribute('value', result);
       el.appendChild(input);
 
@@ -448,7 +448,7 @@
       input.className = 'ouiseo-input-text';
 
       el.innerHTML = 'OG Type: ';
-      result = $('meta[property="og:type"]') ? $('meta[property="og:type"]')[0].content : '';
+      result = $('meta[property="og:type"]')[0] ? $('meta[property="og:type"]')[0].content : '';
       input.setAttribute('value', result);
       el.appendChild(input);
 
