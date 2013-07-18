@@ -1,78 +1,93 @@
-/**************************/
-/* CSS Reset
-/**************************/
+@media all {
+  /**************************/
+  /* CSS Reset
+  /**************************/
 
-.ouiseo * {
-  border:0;
-  font-size:100%;
-  font:inherit;
-  vertical-align: baseline;
-  margin: 0;
-  padding: 0;
-  color: black;
-  text-align: left;
-}
+  .ouiseo * {
+    color: black;
+    font-family:  Helvetica, Arial, sans-serif;
+    border: 0;
+    font-size: 16px;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    line-height: 1;
+  }
 
-/**************************/
-/* Frame Styles
-/**************************/
+  /**************************/
+  /* Frame Styles
+  /**************************/
 
-#ouiseo_frame {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: rgba(255,255,255,.25);
-  cursor: pointer;
-  z-index: 2147483640;
-}
+  #ouiseo_frame {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255,255,255,.75);
+    cursor: pointer;
+    z-index: 2147483640;
+  }
 
-#ouiseo {
-  position: fixed;
-  top: 10%;
-  left: 10%;
-  width: 80%;
-  height: 80%;
-  z-index: 2147483647;
-  border: 10px solid rgba(0,0,0,.5);
-  margin: -5px 0 0 -5px;
-  background: white;
-  overflow-y: scroll;
-}
+  #ouiseo {
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    z-index: 2147483647;
+    border: 10px solid rgba(0,0,0,.5);
+    margin: -5px 0 0 -5px;
+    background: white;
+    overflow-y: scroll;
+  }
 
-/**************************/
-/* Other Styles
-/**************************/
+  #ouiseo p {
+    font-size: 16px;
+    color: black;
+  }
 
-#ouiseo h1 {
-  color: purple;
-  font-size: 1.4em;
-  margin: 10px;
-}
+  /**************************/
+  /* Other Styles
+  /**************************/
 
-#ouiseo h2 {
-  color: red;
-  font-size: 1.2em;
-  margin: 10px;
-}
+  #ouiseo h1 {
+    color: purple;
+    font-size: 1.4em;
+    margin: 10px;
+  }
 
-#ouiseo-results {
-  margin: 10px;
-}
+  #ouiseo h2 {
+    color: red;
+    font-size: 1.2em;
+    margin: 10px;
+  }
 
-.ouiseo-basic-result, .ouiseo-social-result {
-  margin: 10px;
-}
+  #ouiseo-results {
+    margin: 10px;
+  }
 
-.ouiseo-input-text {
-  width: 500px;
-  border: 1px gray solid;
-  padding: 2px 5px;
-}
+  .ouiseo-basic-result, .ouiseo-social-result {
+    margin: 10px;
+  }
 
-.ouiseo-social-image {
-  margin: 10px;
-  height: 50px;
-  width: 50px;
+  input[type='text'].ouiseo-input-text  {
+    width: 500px;
+    font-size: 16px;
+    color: black;
+    border: 1px gray solid;
+    padding: 2px 5px;
+    margin: 7px 0;
+    width: 97%;
+    border-radius: 3px;
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px; 
+  }
+
+  .ouiseo-social-image {
+    margin: 10px;
+    height: 50px;
+    width: 50px;
+  }
 }
