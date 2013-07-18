@@ -1,4 +1,5 @@
-;(function() {
+;
+(function() {
   // The minimum version of jQuery required
   var v = '1.10.2';
 
@@ -329,7 +330,7 @@
 
     function getFacebook() {
       var result = document.createElement('div');
-          title  = document.createElement('h2');
+      title = document.createElement('h2');
 
       result.id = 'ouiseo-facebook';
       title.innerHTML = 'Facebook';
@@ -349,223 +350,126 @@
     function getFacebookAppId() {
       var el = document.createElement('p'),
         input = document.createElement('input'),
-        appIdCount;
+        result;
 
       el.className = 'ouiseo-social-result';
       input.type = 'text';
       input.id = 'ouiseo-fb-app-id';
       input.className = 'ouiseo-input-text';
-      appIdCount = $('meta[property="fb:app_id"]') ? $('meta[property="fb:app_id"]').length : 0;
 
-      el.innerHTML = 'Facebook URL [fb:app_id]';
-
-      if (appIdCount === 0) {
-        el.innerHTML += ': ';
-      } else {
-        el.innerHTML += (' (');
-        el.innerHTML += (appIdCount);
-        el.innerHTML += ('): ');
-
-        var result = '';
-        $.each($('meta[property="fb:app_id"]'), function(index) {
-          result += $('meta[property="fb:app_id"]')[index].content;
-          result += ', ';
-        });
-        result = result.substring(0, result.length - 2); // Remove extra ', '
-        input.setAttribute('value', result);
-      }
-
+      el.innerHTML = 'FB App Id: ';
+      result = $('meta[property="fb:app_id"]') ? $('meta[property="fb:app_id"]')[0].content : '';
+      input.setAttribute('value', result);
       el.appendChild(input);
+
       return el;
     }
 
     function getFacebookURL() {
       var el = document.createElement('p'),
         input = document.createElement('input'),
-        urlCount;
+        result;
 
       el.className = 'ouiseo-social-result';
       input.type = 'text';
       input.id = 'ouiseo-fb-url';
       input.className = 'ouiseo-input-text';
-      urlCount = $('meta[property="og:url"]') ? $('meta[property="og:url"]').length : 0;
 
-      el.innerHTML = 'Facebook URL [og:url]';
-
-      if (urlCount === 0) {
-        el.innerHTML += ': ';
-      } else {
-        el.innerHTML += (' (');
-        el.innerHTML += (urlCount);
-        el.innerHTML += ('): ');
-
-        var result = '';
-        $.each($('meta[property="og:url"]'), function(index) {
-          result += $('meta[property="og:url"]')[index].content;
-          result += ', ';
-        });
-        result = result.substring(0, result.length - 2); // Remove extra ', '
-        input.setAttribute('value', result);
-      }
-
+      el.innerHTML = 'OG URL: ';
+      result = $('meta[property="og:url"]') ? $('meta[property="og:url"]')[0].content : '';
+      input.setAttribute('value', result);
       el.appendChild(input);
+
       return el;
     }
 
     function getFacebookSiteName() {
       var el = document.createElement('p'),
         input = document.createElement('input'),
-        siteNameCount;
+        result;
 
       el.className = 'ouiseo-social-result';
       input.type = 'text';
       input.id = 'ouiseo-fb-site-name';
       input.className = 'ouiseo-input-text';
-      siteNameCount = $('meta[property="og:site_name"]') ? $('meta[property="og:site_name"]').length : 0;
 
-      el.innerHTML = 'Facebook URL [og:site_name]';
-
-      if (siteNameCount === 0) {
-        el.innerHTML += ': ';
-      } else {
-        el.innerHTML += (' (');
-        el.innerHTML += (siteNameCount);
-        el.innerHTML += ('): ');
-
-        var result = '';
-        $.each($('meta[property="og:site_name"]'), function(index) {
-          result += $('meta[property="og:site_name"]')[index].content;
-          result += ', ';
-        });
-        result = result.substring(0, result.length - 2); // Remove extra ', '
-        input.setAttribute('value', result);
-      }
-
+      el.innerHTML = 'OG Site Name: ';
+      result = $('meta[property="og:site_name"]') ? $('meta[property="og:site_name"]')[0].content : '';
+      input.setAttribute('value', result);
       el.appendChild(input);
+
       return el;
     }
 
     function getFacebookTitle() {
       var el = document.createElement('p'),
         input = document.createElement('input'),
-        titleCount;
+        result;
 
       el.className = 'ouiseo-social-result';
       input.type = 'text';
       input.id = 'ouiseo-fb-title';
       input.className = 'ouiseo-input-text';
-      titleCount = $('meta[property="og:title"]') ? $('meta[property="og:title"]').length : 0;
 
-      el.innerHTML = 'Facebook URL [og:title]';
-
-      if (titleCount === 0) {
-        el.innerHTML += ': ';
-      } else {
-        el.innerHTML += (' (');
-        el.innerHTML += (titleCount);
-        el.innerHTML += ('): ');
-
-        var result = '';
-        $.each($('meta[property="og:title"]'), function(index) {
-          result += $('meta[property="og:title"]')[index].content;
-          result += ', ';
-        });
-        result = result.substring(0, result.length - 2); // Remove extra ', '
-        input.setAttribute('value', result);
-      }
-
+      el.innerHTML = 'OG Title: ';
+      result = $('meta[property="og:title"]') ? $('meta[property="og:title"]')[0].content : '';
+      input.setAttribute('value', result);
       el.appendChild(input);
+
       return el;
     }
 
     function getFacebookDescription() {
       var el = document.createElement('p'),
         input = document.createElement('input'),
-        descriptionCount;
+        result;
 
       el.className = 'ouiseo-social-result';
       input.type = 'text';
       input.id = 'ouiseo-fb-description';
       input.className = 'ouiseo-input-text';
-      descriptionCount = $('meta[property="og:description"]') ? $('meta[property="og:description"]').length : 0;
 
-      el.innerHTML = 'Facebook URL [og:description]';
-
-      if (descriptionCount === 0) {
-        el.innerHTML += ': ';
-      } else {
-        el.innerHTML += (' (');
-        el.innerHTML += (descriptionCount);
-        el.innerHTML += ('): ');
-
-        var result = '';
-        $.each($('meta[property="og:description"]'), function(index) {
-          result += $('meta[property="og:description"]')[index].content;
-          result += ', ';
-        });
-        result = result.substring(0, result.length - 2); // Remove extra ', '
-        input.setAttribute('value', result);
-      }
-
+      el.innerHTML = 'OG Description: ';
+      result = $('meta[property="og:description"]') ? $('meta[property="og:description"]')[0].content : '';
+      input.setAttribute('value', result);
       el.appendChild(input);
+
       return el;
     }
 
     function getFacebookType() {
       var el = document.createElement('p'),
         input = document.createElement('input'),
-        typeCount;
+        result;
 
       el.className = 'ouiseo-social-result';
       input.type = 'text';
       input.id = 'ouiseo-fb-type';
       input.className = 'ouiseo-input-text';
-      typeCount = $('meta[property="og:type"]') ? $('meta[property="og:type"]').length : 0;
 
-      el.innerHTML = 'Facebook URL [og:type]';
-
-      if (typeCount === 0) {
-        el.innerHTML += ': ';
-      } else {
-        el.innerHTML += (' (');
-        el.innerHTML += (typeCount);
-        el.innerHTML += ('): ');
-
-        var result = '';
-        $.each($('meta[property="og:type"]'), function(index) {
-          result += $('meta[property="og:type"]')[index].content;
-          result += ', ';
-        });
-        result = result.substring(0, result.length - 2); // Remove extra ', '
-        input.setAttribute('value', result);
-      }
-
+      el.innerHTML = 'OG Type: ';
+      result = $('meta[property="og:type"]') ? $('meta[property="og:type"]')[0].content : '';
+      input.setAttribute('value', result);
       el.appendChild(input);
+
       return el;
     }
 
     function getFacebookImg() {
-      var el  = document.createElement('p'),
-          imgCount;
-
+      var el = document.createElement('p');
       el.className = 'ouiseo-social-result';
-      imgCount     = $('meta[property="og:image"]') ? $('meta[property="og:image"]').length : 0;
-      el.innerHTML = 'Facebook Image [og:image]';
+      el.innerHTML = 'OG Image: ';
 
-      if (imgCount === 0) {
-        el.innerHTML += ': None';
+
+
+      if ($('meta[property="og:image"]')[0]) {
+        el.appendChild(document.createElement('div')); // To show images below title
+        var img       = document.createElement('img');
+        img.src       = $('meta[property="og:image"]')[0].content;
+        img.className = 'ouiseo-social-image';
+        el.appendChild(img);
       } else {
-        el.innerHTML += ' (';
-        el.innerHTML += imgCount;
-        el.innerHTML += ')';
-        el.appendChild(document.createElement('div')); // Create a div so that images show up below title
-
-        $.each($('meta[property="og:image"]'), function(index) {
-          var newImage = document.createElement('img');
-          newImage.src = $('meta[property="og:image"]')[index].content;
-          newImage.className = 'ouiseo-facebook-image';
-          el.appendChild(newImage);
-        });
+        el.innerHTML += 'none';
       }
 
       return el;
@@ -577,17 +481,154 @@
 
     function getTwitter() {
       var result = document.createElement('div');
-          title  = document.createElement('h2');
+      title = document.createElement('h2');
 
       result.id = 'ouiseo-twitter';
       title.innerHTML = 'Twitter';
       result.appendChild(title);
 
-      // result.appendChild(getFacebookImg());
+      result.appendChild(getTwitterCardType());
+      result.appendChild(getTwitterSite());
+      result.appendChild(getTwitterCreator());
+      result.appendChild(getTwitterTitle());
+      result.appendChild(getTwitterDescription());
+      result.appendChild(getTwitterImage());
 
       return result;
     }
 
+    function getTwitterCardType() {
+      var el = document.createElement('p'),
+        input = document.createElement('input'),
+        cardType;
+
+      el.className = 'ouiseo-social-result';
+      input.type = 'text';
+      input.id = 'ouiseo-twitter-card-type';
+      input.className = 'ouiseo-input-text';
+
+      cardType = $('meta[name="twitter:card"]')[0] ? $('meta[name="twitter:card"]')[0].content : '';
+
+      el.innerHTML = 'Card type: ';
+      input.setAttribute('value', cardType);
+
+      el.appendChild(input);
+      return el;
+    }
+
+    function getTwitterSite() {
+      var el = document.createElement('p'),
+        input = document.createElement('input'),
+        site;
+
+      el.className = 'ouiseo-social-result';
+      input.type = 'text';
+      input.id = 'ouiseo-twitter-site';
+      input.className = 'ouiseo-input-text';
+
+
+      el.innerHTML = 'Site';
+
+      if ($('meta[name="twitter:site"]')[0]) {
+        site = $('meta[name="twitter:site"]')[0].content;
+      } else if ($('meta[name="twitter:site:id"]')[0]) {
+        el.innerHTML += ' ID';
+        site = $('meta[name="twitter:site:id"]')[0].content;
+      } else {
+        site = '';
+      }
+
+      el.innerHTML += ': ';
+      input.setAttribute('value', site);
+
+      el.appendChild(input);
+      return el;
+    }
+
+    function getTwitterCreator() {
+      var el = document.createElement('p'),
+        input = document.createElement('input'),
+        creator;
+
+      el.className = 'ouiseo-social-result';
+      input.type = 'text';
+      input.id = 'ouiseo-twitter-creator';
+      input.className = 'ouiseo-input-text';
+
+
+      el.innerHTML = 'Creator';
+
+      if ($('meta[name="twitter:creator"]')[0]) {
+        creator = $('meta[name="twitter:creator"]')[0].content;
+      } else if ($('meta[name="twitter:creator:id"]')[0]) {
+        el.innerHTML += ' ID';
+        creator = $('meta[name="twitter:creator:id"]')[0].content;
+      } else {
+        creator = '';
+      }
+
+      el.innerHTML += ': ';
+      input.setAttribute('value', creator);
+
+      el.appendChild(input);
+      return el;
+    }
+
+    function getTwitterTitle() {
+      var el = document.createElement('p'),
+        input = document.createElement('input'),
+        title;
+
+      el.className = 'ouiseo-social-result';
+      input.type = 'text';
+      input.id = 'ouiseo-twitter-title';
+      input.className = 'ouiseo-input-text';
+
+      title = $('meta[name="twitter:title"]')[0] ? $('meta[name="twitter:title"]')[0].content : '';
+
+      el.innerHTML = 'Card title: ';
+      input.setAttribute('value', title);
+
+      el.appendChild(input);
+      return el;
+    }
+
+    function getTwitterDescription() {
+      var el = document.createElement('p'),
+        input = document.createElement('input'),
+        description;
+
+      el.className = 'ouiseo-social-result';
+      input.type = 'text';
+      input.id = 'ouiseo-twitter-description';
+      input.className = 'ouiseo-input-text';
+
+      description = $('meta[name="twitter:description"]')[0] ? $('meta[name="twitter:description"]')[0].content : '';
+
+      el.innerHTML = 'Card description: ';
+      input.setAttribute('value', description);
+
+      el.appendChild(input);
+      return el;
+    }
+
+    function getTwitterImage() {
+      var el  = document.createElement('p');
+      el.className = 'ouiseo-social-result';
+      el.innerHTML = 'Image: ';
+
+      if ($('meta[name="twitter:image"]')[0]) {
+        el.appendChild(document.createElement('div')); // To show images below title
+        var img       = document.createElement('img');
+        img.src       = $('meta[name="twitter:image"]')[0].content;
+        img.className = 'ouiseo-social-image';
+        el.appendChild(img);
+      } else {
+        el.innerHTML += 'none';
+      }
+
+      return el;
+    }
 
     //////////////////////////////////////////
     // Initialize Handlers To Update Values
