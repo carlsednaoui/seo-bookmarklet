@@ -13,7 +13,11 @@
         var jsCode = document.createElement('script');
         jsCode.setAttribute('src', '//carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.js');
         document.body.appendChild(jsCode);
-      } else { ouiseo(); }
+      } else if (!!window.ouiseo && !document.getElementById('ouiseo')) { 
+        ouiseo(); 
+      } else {
+        console.log('ouiseo is already open');
+      }
     })();">Cliky me</a>
   </body>
 </html>

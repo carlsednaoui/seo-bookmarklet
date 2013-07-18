@@ -25,12 +25,16 @@
   </head>
 
   <body>
-    <a href="javascript: (function(){ 
+    <a href="javascript: (function(){
       if (window.ouiseo === undefined) {
         var jsCode = document.createElement('script');
         jsCode.setAttribute('src', 'file:///Users/carl/sites/ouiseo/ouiseo.js');
         document.body.appendChild(jsCode);
-      } else { ouiseo(); }
+      } else if (!!window.ouiseo && !document.getElementById('ouiseo')) { 
+        ouiseo(); 
+      } else {
+        console.log('ouiseo is already open');
+      }
     })();">Cliky me</a>
 
 
