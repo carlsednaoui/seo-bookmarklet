@@ -38,6 +38,7 @@
   border: 10px solid rgba(0,0,0,.5);
   margin: -5px 0 0 -5px;
   background: white;
+  overflow-y: scroll;
 }
 
 /**************************/
@@ -54,7 +55,7 @@
   margin: 10px;
 }
 
-.ouiseo-basic-result {
+.ouiseo-basic-result, .ouiseo-social-result {
   margin: 10px;
 }
 
