@@ -13,5 +13,9 @@
 - [Object types](https://developers.facebook.com/docs/opengraph/creating-object-types/)
 - [Debugger](https://developers.facebook.com/tools/debug)
 
+## Twitter Resources
+- [Validator](https://dev.twitter.com/docs/cards/validation/validator)
+- [Cards](https://dev.twitter.com/docs/cards)
+
 ## TODO
 - Check if they use KM, GA, Mixpanel, Optimizely, VWO, MouseFlow, Google Remarketing, AdRoll, CrazyEgg
