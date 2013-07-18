@@ -12,6 +12,7 @@
     margin: 0;
     padding: 0;
     text-align: left;
+    float: none;
     line-height: 1;
   }
 
@@ -46,6 +47,8 @@
   #ouiseo p {
     font-size: 16px;
     color: black;
+    text-align: left;
+    float: none;
   }
 
   /**************************/
@@ -56,12 +59,14 @@
     color: purple;
     font-size: 1.4em;
     margin: 10px;
+    font-weight: bold;
   }
 
   #ouiseo h2 {
     color: red;
     font-size: 1.2em;
     margin: 10px;
+    font-weight: bold;
   }
 
   #ouiseo-results {
@@ -82,7 +87,13 @@
     width: 97%;
     border-radius: 3px;
     -webkit-border-radius: 3px; 
-    -moz-border-radius: 3px; 
+    -moz-border-radius: 3px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    float: none;
+    text-align: left;
+    height: auto;
   }
 
   .ouiseo-social-image {

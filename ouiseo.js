@@ -7,8 +7,8 @@
   if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
     var done = false,
       script = document.createElement('script');
-    script.src    = '//ajax.googleapis.com/ajax/libs/jquery/' + v + '/jquery.min.js';
-    // script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/' + v + '/jquery.min.js';
+    // script.src    = '//ajax.googleapis.com/ajax/libs/jquery/' + v + '/jquery.min.js';
+    script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/' + v + '/jquery.min.js';
 
     script.onload = script.onreadystatechange = function() {
       if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
@@ -25,12 +25,13 @@
   function initOuiseo() {
     (window.ouiseo = function() {
       // Add ouiseo
-      $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='//carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.css'>");
-      // $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='http://carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.css'>");
+      // $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='//carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.css'>");
+      // $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='file:///Users/carl/sites/ouiseo/ouiseo.css'>");
+      $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='http://carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.css'>");
       $('body').append(createHTML());
       initializeOuiseoHandlers();
       $("#ouiseo").fadeIn(250);
-      $('head').append(addOuiseoGA());
+      // $('head').append(addOuiseoGA());
 
       // Remove ouiseo when user clicks outside of frame
       $("#ouiseo_frame").click(function(event) {
