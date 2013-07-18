@@ -1,5 +1,4 @@
-;
-(function() {
+;(function() {
   // The minimum version of jQuery required
   var v = '1.10.2';
 
@@ -465,8 +464,8 @@
 
       if ($('meta[property="og:image"]')[0]) {
         el.appendChild(document.createElement('div')); // To show images below title
-        var img       = document.createElement('img');
-        img.src       = $('meta[property="og:image"]')[0].content;
+        var img = document.createElement('img');
+        img.src = $('meta[property="og:image"]')[0].content;
         img.className = 'ouiseo-social-image';
         el.appendChild(img);
       } else {
@@ -614,14 +613,14 @@
     }
 
     function getTwitterImage() {
-      var el  = document.createElement('p');
+      var el = document.createElement('p');
       el.className = 'ouiseo-social-result';
       el.innerHTML = 'Image: ';
 
       if ($('meta[name="twitter:image"]')[0]) {
         el.appendChild(document.createElement('div')); // To show images below title
-        var img       = document.createElement('img');
-        img.src       = $('meta[name="twitter:image"]')[0].content;
+        var img = document.createElement('img');
+        img.src = $('meta[name="twitter:image"]')[0].content;
         img.className = 'ouiseo-social-image';
         el.appendChild(img);
       } else {
