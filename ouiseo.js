@@ -318,10 +318,14 @@
       return div;
     }
 
+    //////////////////////////////
+    // Get Facebook Data
+    //////////////////////////////
+
     function getFacebook() {
       var result = document.createElement('div');
           title  = document.createElement('h2');
-      
+
       result.id = 'ouiseo-facebook';
       title.innerHTML = 'Facebook';
       result.appendChild(title);
@@ -332,12 +336,9 @@
       result.appendChild(getFacebookTitle());
       result.appendChild(getFacebookDescription());
       result.appendChild(getFacebookType());
+      result.appendChild(getFacebookImg());
 
       return result;
-
-      // var img = function getFacebookImage(); //<meta property="og:image" content="http://davidwalsh.name/wp-content/themes/klass/img/facebooklogo.png"/>
-      // // It's best to use a square image, as Facebook displays them in that matter. That image should be at least 50x50 in any of the usually supported image forms (JPG, PNG, etc.)
-      // // The URL of an image which is used in stories published about this object. We suggest that you give us an image of at least 200x200 pixels. However, bigger is better, so if you have a 1500x1500 image that you can use, please give it to us. We downsample and crop it for for people using smaller-resolution devices but will use it on a larger device. The larger this image is, the better engagement stories featuring it will get. (Note: image sizes must be no more than 5MB in size.)
     }
 
     function getFacebookAppId() {
@@ -535,6 +536,33 @@
       }
 
       el.appendChild(input);
+      return el;
+    }
+
+    function getFacebookImg() {
+      var el  = document.createElement('p'),
+          imgCount;
+
+      el.className = 'ouiseo-social-result';
+      imgCount     = $('meta[property="og:image"]') ? $('meta[property="og:image"]').length : 0;
+      el.innerHTML = 'Facebook Image [og:image]';
+
+      if (imgCount === 0) {
+        el.innerHTML += ': None';
+      } else {
+        el.innerHTML += ' (';
+        el.innerHTML += imgCount;
+        el.innerHTML += ')';
+        el.appendChild(document.createElement('div')); // Create a div so that images show up below title
+
+        $.each($('meta[property="og:image"]'), function(index) {
+          var newImage = document.createElement('img');
+          newImage.src = $('meta[property="og:image"]')[index].content;
+          newImage.className = 'ouiseo-facebook-image';
+          el.appendChild(newImage);
+        });
+      }
+
       return el;
     }
 
