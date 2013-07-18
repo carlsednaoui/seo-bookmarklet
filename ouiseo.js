@@ -25,11 +25,11 @@
     (window.ouiseo = function() {
       // Add ouiseo
       // $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='//carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.css'>");
-      // $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='file:///Users/carl/sites/ouiseo/ouiseo.css'>");
       $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='http://carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.css'>");
       $('body').append(createHTML());
       initializeOuiseoHandlers();
       $("#ouiseo").fadeIn(250);
+      // $('head').append(addOuiseoGA());
 
       // Remove ouiseo when user clicks outside of frame
       $("#ouiseo_frame").click(function(event) {
@@ -37,9 +37,14 @@
         $("#ouiseo_frame").slideUp(750);
         setTimeout("$('#ouiseo_frame').remove()", 750);
         setTimeout("$('#ouiseo-styles').remove()", 750);
+        setTimeout("$('#ouiseo-ga').remove()", 750);
         setTimeout("$('#ouiseo').remove()", 750);
       });
     })();
+
+    function addOuiseoGA() {
+      return "<script id='ouiseo-ga'>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-23209172-7', window.location.hostname);ga('send', 'pageview');</script>";
+    }
 
     function createHTML() {
       var html = '';
@@ -74,7 +79,7 @@
 
       var socialSection = createSocialSection();
       socialSection.appendChild(getFacebook());
-      // socialSection.appendChild(getTwitter());
+      socialSection.appendChild(getTwitter());
       container.appendChild(socialSection);
 
       return container;
@@ -565,6 +570,24 @@
 
       return el;
     }
+
+    //////////////////////////////
+    // Get Twitter Data
+    //////////////////////////////
+
+    function getTwitter() {
+      var result = document.createElement('div');
+          title  = document.createElement('h2');
+
+      result.id = 'ouiseo-twitter';
+      title.innerHTML = 'Twitter';
+      result.appendChild(title);
+
+      // result.appendChild(getFacebookImg());
+
+      return result;
+    }
+
 
     //////////////////////////////////////////
     // Initialize Handlers To Update Values
