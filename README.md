@@ -18,4 +18,11 @@
 - [Cards](https://dev.twitter.com/docs/cards)
 
 ## TODO
+- Refactor CSS AND JS
+- Create gh-page
+- Add tracking to link to carlsednaoui.com
+- Remove local host options from main script
+- Create minified version
 - Check if they use KM, GA, Mixpanel, Optimizely, VWO, MouseFlow, Google Remarketing, AdRoll, CrazyEgg
+- Add 'SEO' score?
+- Add 'SEO' suggestions?
