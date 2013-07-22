@@ -60,6 +60,13 @@
     color: white;
     text-align: center;
     padding: 10px;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    text-transform: none;
+    letter-spacing: 0px;
+    display: block;
+    font-size: 16px;
   }
 
   #ouiseo-author a {
@@ -67,9 +74,13 @@
   }
 
   #ouiseo h2 {
+    color: white;
     font-size: 1.2em;
     font-weight: bold;
-    color: white;
+    font-style: normal;
+    text-decoration: none;
+    text-transform: none;
+    letter-spacing: 0px;
     margin: 10px 10px 20px 10px;
   }
 
@@ -94,6 +105,7 @@
     float: none;
     text-align: left;
     height: auto;
+    line-height: 1;
   }
 
   .ouiseo-basic-result, .ouiseo-social-result {
