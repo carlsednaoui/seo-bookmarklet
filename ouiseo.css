@@ -42,6 +42,7 @@
     margin: -5px 0 0 -5px;
     background: white;
     overflow-y: scroll;
+    background-color: #384b5f;
   }
 
   #ouiseo p {
@@ -55,25 +56,24 @@
   /* Other Styles
   /**************************/
 
-  #ouiseo h1 {
-    color: purple;
-    font-size: 1.4em;
-    margin: 10px;
-    font-weight: bold;
+  #ouiseo-author {
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+
+  #ouiseo-author a {
+    color: white;
   }
 
   #ouiseo h2 {
-    color: red;
     font-size: 1.2em;
-    margin: 10px;
     font-weight: bold;
+    color: white;
+    margin: 10px 10px 20px 10px;
   }
 
   #ouiseo-results {
-    margin: 10px;
-  }
-
-  .ouiseo-basic-result, .ouiseo-social-result {
     margin: 10px;
   }
 
@@ -84,7 +84,7 @@
     border: 1px gray solid;
     padding: 2px 5px;
     margin: 7px 0;
-    width: 97%;
+    width: 98%;
     border-radius: 3px;
     -webkit-border-radius: 3px; 
     -moz-border-radius: 3px;
@@ -96,9 +96,66 @@
     height: auto;
   }
 
+  .ouiseo-basic-result, .ouiseo-social-result {
+    margin: 12px;
+  }
+
   .ouiseo-social-image {
-    margin: 10px;
+    margin: 0 10px 10px 10px;
     height: 50px;
     width: 50px;
   }
+
+  /*SEO Styles*/
+
+  #ouiseo-basic-seo {
+    background-color: #d87d6d;
+    padding: 5px;
+  }
+
+  #ouiseo-basic-seo p.ouiseo-basic-result, #ouiseo-basic-seo p.ouiseo-basic-result span {
+    color: #73473d;
+  }
+
+  #ouiseo-basic-seo p.ouiseo-basic-result input.ouiseo-input-text {
+    color: white;
+    background-color: #d87d6d;
+    border: 1px #73473d solid;
+    padding: 7px;
+  }
+
+  /*Facebook Styles*/
+  #ouiseo-facebook {
+    background-color: #4b9ed3;
+    padding: 5px;
+  }
+
+  #ouiseo-facebook p.ouiseo-social-result, #ouiseo-facebook p.ouiseo-social-result span {
+    color: #31566e;
+  }
+
+  #ouiseo-facebook p.ouiseo-social-result input.ouiseo-input-text {
+    color: white;
+    background-color: #4b9ed3;
+    border: 1px #31566e solid;
+    padding: 7px;
+  }
+
+  /*Twitter Styles*/
+  #ouiseo-twitter {
+    background-color: #6cc3e9;
+    padding: 5px;
+  }
+
+  #ouiseo-twitter p.ouiseo-social-result, #ouiseo-twitter p.ouiseo-social-result span {
+    color: #356d91;
+  }
+
+  #ouiseo-twitter p.ouiseo-social-result input.ouiseo-input-text {
+    color: white;
+    background-color: #6cc3e9;
+    border: 1px #356d91 solid;
+    padding: 7px;
+  }
+
 }

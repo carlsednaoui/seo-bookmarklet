@@ -25,8 +25,8 @@
     (window.ouiseo = function() {
       // Add ouiseo
       // $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='//carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.css'>");
-      // $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='file:///Users/carl/sites/ouiseo/ouiseo.css'>");
-      $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='http://carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.css'>");
+      $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='file:///Users/carl/sites/ouiseo/ouiseo.css'>");
+      // $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='http://carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.css'>");
       $('body').append(createHTML());
       initializeOuiseoHandlers();
       $("#ouiseo").fadeIn(250);
@@ -87,9 +87,19 @@
     }
 
     function createOuiseoContainer() {
-      var container = document.createElement('div');
-      container.id = 'ouiseo';
+      var container = document.createElement('div'),
+          author    = document.createElement('h1');
+
+      container.id        = 'ouiseo';
       container.className = 'ouiseo';
+      author.id           = 'ouiseo-author';
+      author.innerHTML    = 'Made by ';
+      author.innerHTML   += '<a href="http://www.carlsednaoui.com?utm_campaign=test" target="_blank">Carl Sednaoui</a>';
+      author.innerHTML   += ' - Open sourced on ';
+      author.innerHTML   += '<a href="https://github.com/carlsednaoui/ouiseo" target="_blank">Github</a>';
+
+      container.appendChild(author);
+
       return container;
     }
 
@@ -101,8 +111,8 @@
       var div = document.createElement('div');
       div.id = 'ouiseo-basic-seo';
 
-      var title = document.createElement('h1');
-      title.innerHTML = 'Basic SEO';
+      var title = document.createElement('h2');
+      title.innerHTML = 'SEO';
 
       div.appendChild(title);
       return div;
@@ -129,7 +139,7 @@
 
       el.innerHTML = 'Title (';
       el.appendChild(span);
-      el.innerHTML += '): ';
+      el.innerHTML += ')';
       el.appendChild(input);
 
       return el;
@@ -156,7 +166,7 @@
 
       el.innerHTML = 'Meta Description (';
       el.appendChild(span);
-      el.innerHTML += '): ';
+      el.innerHTML += ')';
       el.appendChild(input);
 
       return el;
@@ -183,7 +193,7 @@
 
       el.innerHTML = 'Meta Keywords (';
       el.appendChild(span);
-      el.innerHTML += '): ';
+      el.innerHTML += ')';
       el.appendChild(input);
 
       return el;
@@ -303,7 +313,7 @@
 
       el.innerHTML = 'Site cookie: (';
       el.appendChild(span);
-      el.innerHTML += '): ';
+      el.innerHTML += ')';
       el.appendChild(input);
 
       return el;
@@ -317,10 +327,6 @@
       var div = document.createElement('div');
       div.id = 'ouiseo-social-section';
 
-      var title = document.createElement('h1');
-      title.innerHTML = 'Social';
-
-      div.appendChild(title);
       return div;
     }
 
@@ -357,7 +363,7 @@
       input.id = 'ouiseo-fb-app-id';
       input.className = 'ouiseo-input-text';
 
-      el.innerHTML = 'FB App Id: ';
+      el.innerHTML = 'FB App Id';
       result = $('meta[property="fb:app_id"]')[0] ? $('meta[property="fb:app_id"]')[0].content : '';
       input.setAttribute('value', result);
       el.appendChild(input);
@@ -375,7 +381,7 @@
       input.id = 'ouiseo-fb-url';
       input.className = 'ouiseo-input-text';
 
-      el.innerHTML = 'OG URL: ';
+      el.innerHTML = 'OG URL';
       result = $('meta[property="og:url"]')[0] ? $('meta[property="og:url"]')[0].content : '';
       input.setAttribute('value', result);
       el.appendChild(input);
@@ -393,7 +399,7 @@
       input.id = 'ouiseo-fb-site-name';
       input.className = 'ouiseo-input-text';
 
-      el.innerHTML = 'OG Site Name: ';
+      el.innerHTML = 'OG Site Name';
       result = $('meta[property="og:site_name"]')[0] ? $('meta[property="og:site_name"]')[0].content : '';
       input.setAttribute('value', result);
       el.appendChild(input);
@@ -411,7 +417,7 @@
       input.id = 'ouiseo-fb-title';
       input.className = 'ouiseo-input-text';
 
-      el.innerHTML = 'OG Title: ';
+      el.innerHTML = 'OG Title';
       result = $('meta[property="og:title"]')[0] ? $('meta[property="og:title"]')[0].content : '';
       input.setAttribute('value', result);
       el.appendChild(input);
@@ -429,7 +435,7 @@
       input.id = 'ouiseo-fb-description';
       input.className = 'ouiseo-input-text';
 
-      el.innerHTML = 'OG Description: ';
+      el.innerHTML = 'OG Description';
       result = $('meta[property="og:description"]')[0] ? $('meta[property="og:description"]')[0].content : '';
       input.setAttribute('value', result);
       el.appendChild(input);
@@ -447,7 +453,7 @@
       input.id = 'ouiseo-fb-type';
       input.className = 'ouiseo-input-text';
 
-      el.innerHTML = 'OG Type: ';
+      el.innerHTML = 'OG Type';
       result = $('meta[property="og:type"]')[0] ? $('meta[property="og:type"]')[0].content : '';
       input.setAttribute('value', result);
       el.appendChild(input);
@@ -458,7 +464,7 @@
     function getFacebookImg() {
       var el = document.createElement('p');
       el.className = 'ouiseo-social-result';
-      el.innerHTML = 'OG Image: ';
+      el.innerHTML = 'OG Image';
 
 
 
@@ -509,7 +515,7 @@
 
       cardType = $('meta[name="twitter:card"]')[0] ? $('meta[name="twitter:card"]')[0].content : '';
 
-      el.innerHTML = 'Card type: ';
+      el.innerHTML = 'Card type';
       input.setAttribute('value', cardType);
 
       el.appendChild(input);
@@ -538,7 +544,6 @@
         site = '';
       }
 
-      el.innerHTML += ': ';
       input.setAttribute('value', site);
 
       el.appendChild(input);
@@ -567,7 +572,6 @@
         creator = '';
       }
 
-      el.innerHTML += ': ';
       input.setAttribute('value', creator);
 
       el.appendChild(input);
@@ -586,7 +590,7 @@
 
       title = $('meta[name="twitter:title"]')[0] ? $('meta[name="twitter:title"]')[0].content : '';
 
-      el.innerHTML = 'Card title: ';
+      el.innerHTML = 'Card title';
       input.setAttribute('value', title);
 
       el.appendChild(input);
@@ -605,7 +609,7 @@
 
       description = $('meta[name="twitter:description"]')[0] ? $('meta[name="twitter:description"]')[0].content : '';
 
-      el.innerHTML = 'Card description: ';
+      el.innerHTML = 'Card description';
       input.setAttribute('value', description);
 
       el.appendChild(input);
@@ -615,7 +619,7 @@
     function getTwitterImage() {
       var el = document.createElement('p');
       el.className = 'ouiseo-social-result';
-      el.innerHTML = 'Image: ';
+      el.innerHTML = 'Image';
 
       if ($('meta[name="twitter:image"]')[0]) {
         el.appendChild(document.createElement('div')); // To show images below title
