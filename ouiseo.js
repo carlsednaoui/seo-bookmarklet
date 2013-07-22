@@ -24,7 +24,7 @@
   function initOuiseo() {
     (window.ouiseo = function() {
       // Add ouiseo
-      $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='//raw.github.com/carlsednaoui/ouiseo/master/ouiseo.css'>");
+      $('head').append("<link rel='stylesheet' id='ouiseo-styles' href='//carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.css'>");
       $('body').append(createHTML());
       initializeOuiseoHandlers();
       $("#ouiseo").fadeIn(250);
