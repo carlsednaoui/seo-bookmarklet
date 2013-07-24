@@ -28,7 +28,7 @@
       $('body').append(createHTML());
       initializeOuiseoHandlers();
       $("#ouiseo").fadeIn(250);
-      // $('head').append(addOuiseoGA());
+      $('head').append(addOuiseoGA());
 
       // Remove ouiseo when user clicks outside of frame
       $("#ouiseo_frame").click(function(event) {
@@ -92,7 +92,7 @@
       container.className = 'ouiseo';
       author.id           = 'ouiseo-author';
       author.innerHTML    = 'Made by ';
-      author.innerHTML   += '<a href="http://www.carlsednaoui.com?utm_campaign=test" target="_blank">Carl Sednaoui</a>';
+      author.innerHTML   += '<a href="http://www.carlsednaoui.com?utm_campaign=ouiseo&utm_medium=widget-link&utm_source=ouiseo-browser-extension" target="_blank">Carl Sednaoui</a>';
       author.innerHTML   += ' - Open sourced on ';
       author.innerHTML   += '<a href="https://github.com/carlsednaoui/ouiseo" target="_blank">Github</a>';
 
