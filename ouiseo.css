@@ -1,18 +1,18 @@
 @media all {
   /**************************/
-  /* CSS Reset
+  /* Basic CSS Reset
   /**************************/
 
   .ouiseo * {
     color: black;
     font-family:  Helvetica, Arial, sans-serif;
-    border: 0;
     font-size: 16px;
+    text-align: left;
     vertical-align: baseline;
+    float: none;    
     margin: 0;
     padding: 0;
-    text-align: left;
-    float: none;
+    border: 0;
     line-height: 1;
   }
 
@@ -31,19 +31,27 @@
     z-index: 2147483640;
   }
 
+  /**************************/
+  /* OuiSEO Basic Container Styles
+  /**************************/  
+
   #ouiseo {
+    background: white;
+    background-color: #384b5f;
     position: fixed;
+    margin: -5px 0 0 -5px;
     top: 10%;
     left: 10%;
     width: 80%;
     height: 80%;
     z-index: 2147483647;
     border: 10px solid rgba(0,0,0,.5);
-    margin: -5px 0 0 -5px;
-    background: white;
-    overflow-y: scroll;
-    background-color: #384b5f;
+    overflow-y: scroll; 
   }
+
+  /**************************/
+  /* OuiSEO Default Container Styles
+  /**************************/  
 
   #ouiseo p {
     font-size: 16px;
@@ -51,10 +59,6 @@
     text-align: left;
     float: none;
   }
-
-  /**************************/
-  /* Other Styles
-  /**************************/
 
   #ouiseo-author {
     color: white;
@@ -118,7 +122,9 @@
     width: 50px;
   }
 
-  /*SEO Styles*/
+  /**************************/
+  /* SEO Section Styles
+  /**************************/
 
   #ouiseo-basic-seo {
     background-color: #d87d6d;
@@ -136,7 +142,10 @@
     padding: 7px;
   }
 
-  /*Facebook Styles*/
+  /**************************/
+  /* Facebook Section Styles
+  /**************************/
+
   #ouiseo-facebook {
     background-color: #4b9ed3;
     padding: 5px;
@@ -153,7 +162,10 @@
     padding: 7px;
   }
 
-  /*Twitter Styles*/
+  /**************************/
+  /* Twitter Section Styles
+  /**************************/
+
   #ouiseo-twitter {
     background-color: #6cc3e9;
     padding: 5px;
