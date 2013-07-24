@@ -14,6 +14,12 @@ __Note:__ OuiSEO is an evolving project and new features may be added every now 
 
 To install OuiSEO simply go [here](http://carlsednaoui.github.io/ouiseo/install.html).
 
+## Demo
+![OuiSEO Demo Image 1](http://f.cl.ly/items/202d2s2W2x2y1x2e0K1g/ouiseo_demo_1.png)
+![OuiSEO Demo Image 2](http://f.cl.ly/items/0o04060g0x301m3E3w16/ouiseo_demo_2.png)
+![OuiSEO Demo Image 3](http://f.cl.ly/items/2F1Q293i2w0R1R2v2m2G/ouiseo_demo_3.png)
+![OuiSEO Demo Image 4](http://f.cl.ly/items/0X421F1o1I0k0m0u2x0A/ouiseo_demo_4.png)
+
 
 ## Inspiration
 
