@@ -5,12 +5,15 @@
     <title>Install instructions for OuiSEO</title>
     <meta name="description" content="OuiSEO is an open-source bookmarklet that shows you on-page SEO and social meta data information.">
     <style type="text/css">
-      a:link {
+      a:link.highlight {
         background-color: #303437;
         color: white;
         text-decoration: none;
         padding: 3px;
       }
+      #main {margin: 20px 100px;}
+      h1 {margin-bottom: 40px}
+      h2 {margin: 40px 0 20px 0;}
     </style>
 
     <!-- GA Tracking -->
@@ -43,43 +46,49 @@
   </head>
 
   <body>
-    <p>
-      Drag this link to your bookmark bar to install OuiSEO >>  
-      <a href="javascript: (function(){ 
-        if (window.ouiseo === undefined) {
-          var jsCode = document.createElement('script');
-          jsCode.setAttribute('src', '//carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.min.js');
-          document.body.appendChild(jsCode);
-        } else if (!!window.ouiseo && !document.getElementById('ouiseo')) { 
-          ouiseo(); 
-        } else {
-          console.log('ouiseo is already open');
-        }
-      })();" class="highlight">OuiSEO</a>
-    </p>
+    <div id="main">
+      <h1>Installing OuiSEO</h1>
+      <p>
+        Drag this link to your bookmark bar to install OuiSEO >>  
+        <a href="javascript: (function(){ 
+          if (window.ouiseo === undefined) {
+            var jsCode = document.createElement('script');
+            jsCode.setAttribute('src', '//carlsednaoui.s3.amazonaws.com/ouiseo/ouiseo.min.js');
+            document.body.appendChild(jsCode);
+          } else if (!!window.ouiseo && !document.getElementById('ouiseo')) { 
+            ouiseo(); 
+          } else {
+            console.log('ouiseo is already open');
+          }
+        })();" class="highlight">OuiSEO</a>
+      </p>
 
-    <div class="installation-instructions">
-      <h2>Adding a link to your bookmark bar</h2>
-      <img src="http://f.cl.ly/items/2k3m2C0r2C0M2g0q0T25/ouiseo_install_image.gif">
+      <div class="installation-instructions">
+        <h2>Adding a link to your bookmark bar</h2>
+        <img src="http://f.cl.ly/items/2k3m2C0r2C0M2g0q0T25/ouiseo_install_image.gif">
+      </div>
+
+      <h2>About OuiSEO</h2>
+      Visit the <a href="http://carlsednaoui.github.io/ouiseo/" target="_blank">official GitHub page</a> to learn more about OuiSEO. This project was created by <a href="http://carlsednaoui.com/about?utm_campaign=ouiseo&utm_source=ouiseo-install-page&utm_medium=ouiseo-about-link" target="_blank">Carl Sednaoui</a>.
     </div>
     
-  <!-- AddThis Smart Layers BEGIN -->
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5201cda051ddb92d"></script>
-  <script type="text/javascript">
-    addthis.layers({
-      'theme' : 'transparent',
-      'share' : {
-        'position' : 'left',
-        'numPreferredServices' : 5
-      }, 
-      'follow' : {
-        'services' : [
-          {'service': 'facebook', 'id': 'sednaoui'},
-          {'service': 'twitter', 'id': 'carlsednaoui'}
-        ]
-      }   
-    });
-  </script>
-  <!-- AddThis Smart Layers END -->
+<!-- AddThis Smart Layers BEGIN -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5201cda051ddb92d"></script>
+<script type="text/javascript">
+  addthis.layers({
+    'theme' : 'light',
+    'share' : {
+      'position' : 'left',
+      'numPreferredServices' : 3
+    }, 
+    'follow' : {
+      'services' : [
+        {'service': 'facebook', 'id': 'sednaoui'},
+        {'service': 'twitter', 'id': 'carlsednaoui'}
+      ]
+    }   
+  });
+</script>
+<!-- AddThis Smart Layers END -->
   </body>
 </html>
