@@ -31,6 +31,7 @@ OuiSEO is greatly inspired by this [SEO Bookmarklet](http://twkm.ca/seo-bookmark
 - [Open graph documentation](https://developers.facebook.com/docs/opengraph/)
 - [Undestanding Facebook object types](https://developers.facebook.com/docs/opengraph/creating-object-types/)
 - [Facebook Open Graph Debugger](https://developers.facebook.com/tools/debug)
+- [The Open Graph protocol](http://ogp.me/)
 
 ### Twitter Resources
 - [Twitter Cards Documentation](https://dev.twitter.com/docs/cards)
