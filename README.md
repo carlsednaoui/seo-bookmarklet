@@ -12,7 +12,7 @@ __Note:__ OuiSEO is an evolving project and new features may be added in the fut
 
 ## Installation
 
-To install OuiSEO simply go [here](http://carlsednaoui.github.io/ouiseo/install.html).
+To install OuiSEO simply go [here](http://carlsednaoui.github.io/seo-bookmarklet/install.html).
 
 ## Demo
 ![OuiSEO Demo Image 1](http://f.cl.ly/items/202d2s2W2x2y1x2e0K1g/ouiseo_demo_1.png)
