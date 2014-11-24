@@ -368,7 +368,7 @@
       result.appendChild(createElWithAlternateSelector('Creator', 'twitter-creator', 'meta[name="twitter:creator"]', 'meta[name="twitter:creator:id"]'));
       result.appendChild(createElWithSelector('Card title', 'twitter-card-title', 'meta[name="twitter:title"]'));
       result.appendChild(createElWithSelector('Card description', 'twitter-card-description','meta[name="twitter:description"]'));
-      result.appendChild(createImageEl('Image', 'meta[name="twitter:image"]'));
+      result.appendChild(createImageEl('Image', 'meta[name="twitter:image:src"]'));
 
       return result;
     }
